@@ -1,0 +1,1 @@
+Nơi chứa class, function thường được sử dụng
