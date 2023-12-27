@@ -1,10 +1,9 @@
 'use strict'
-
+const {db : {host,port,name}} = require("../configs/congif.mongodb")
 const mongoose = require("mongoose");
 const { countConnectMongodb } = require("../helpers/check.connect.mongodb")
-const connectString = "mongodb+srv://Ngiad:Ngiad001@cluster0.2ts8aja.mongodb.net/";
 
-
+const connectString = `${host}://${port}/${name}`
 
 class Database {
     constructor() {
@@ -12,7 +11,7 @@ class Database {
     }
 
     connect(type = 'mongodb') {
-        if (process.env.PRODUCTION === "dev") {
+        if (process.env.NODE_ENV === "dev") {
             mongoose.set("debug", true);
             mongoose.set('debug', { color: 'true' })
         }
@@ -27,7 +26,7 @@ class Database {
 
 
     static getInstance() {
-        if (!Database.instance) Database.instance = new MongoDb()
+        if (!Database.instance) Database.instance = new Database()
 
         return Database.instance
     }

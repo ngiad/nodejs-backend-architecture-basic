@@ -23,8 +23,6 @@ const checkOverLoad = () => {
     console.log(`Active connections : ${countConnect}`)
     console.log(`Memory usage : ${memoryUsage/1024/1024} MB`)
     if (maxConnections > countConnect) console.warn("Connect Overload detected");
-    
-    mongoose.connection.on('error', mongoose.disconnect()); // sẩy ra lỗi thì đóng kết nối
   }, _SECONDS);
 };
 

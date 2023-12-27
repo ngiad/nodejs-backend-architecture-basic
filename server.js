@@ -2,7 +2,7 @@
 
 const { default: mongoose } = require("mongoose");
 const app = require("./src/app");
-const PORT = 5555;
+const PORT = process.env.PORT || 5656;
 
 const server = app.listen(PORT, () => {
   console.log("SERVER IS RUNNING ON PORT ::: ", PORT);
